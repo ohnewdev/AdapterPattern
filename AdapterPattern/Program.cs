@@ -13,6 +13,9 @@
 /// 구현 개첵 이름은 'Adapter' 으로 해주세요
 /// Math 클래스에서 두 배와 절반을 구하는 함수는 이미 구현되어있습니다.
 /// 
+/// 추가 요구사항
+/// 1) 강화된 알고리즘 doubled 를 사용하시오
+/// 2) half 에서 log를 찍는 것을 추가하시오.
 /// https://www.youtube.com/watch?v=gJDZ7pcvlAU&list=PLsoscMhnRc7pPsRHmgN4M8tqUdWZzkpxY&index=3
 /// </summary>
 
@@ -41,14 +44,14 @@ namespace AdapterPattern
         //half
         public static double half(double num) => num / 2;
 
+        // 추가 요구사항
+        public static Double doubled(Double d) => d * 2;
 
     }
 
     public interface IAdapter
     {
-        // 필요한 기능
         public float twiceOf(float f);
-        // 필요한 기능
         public float halfOf(float f);
 
     }
@@ -57,13 +60,16 @@ namespace AdapterPattern
     {
         public float halfOf(float f)
         {
+            // 이미 주어진 알고리즘(Math) 를 변경하지 않고
+            // 사용할 수 있도록 하였다.
+            Console.WriteLine("절반함수 호출 시작");
             return (float)Math.half(Convert.ToDouble(f));
 
         }
 
         public float twiceOf(float f)
         {
-            return (float)Math.twoTime(Convert.ToDouble(f));
+            return (float)Math.doubled(Convert.ToDouble(f));
 
         }
 
