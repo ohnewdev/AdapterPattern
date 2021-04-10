@@ -24,6 +24,11 @@ namespace AdapterPattern
         {
             Console.WriteLine("Hello World!");
 
+            IAdapter adapter = new Adapter();
+            Console.WriteLine(adapter.twiceOf(100f));
+            Console.WriteLine(adapter.halfOf(88f));
+
+
         }
 
         // public
@@ -36,7 +41,32 @@ namespace AdapterPattern
         //half
         public static double half(double num) => num / 2;
 
-        public static Double doubled(Double d) => d * 2;
+
+    }
+
+    public interface IAdapter
+    {
+        // 필요한 기능
+        public float twiceOf(float f);
+        // 필요한 기능
+        public float halfOf(float f);
+
+    }
+
+    public class Adapter : IAdapter
+    {
+        public float halfOf(float f)
+        {
+            return (float)Math.half(Convert.ToDouble(f));
+
+        }
+
+        public float twiceOf(float f)
+        {
+            return (float)Math.twoTime(Convert.ToDouble(f));
+
+        }
+
 
     }
 }
